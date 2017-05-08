@@ -5,6 +5,18 @@ process_args() {
     VAULT_TOKEN="$VAULT_TOKEN"
     VAULT_ADDR="$VAULT_ADDR"
     VAULT_CERT_PATH="certs"
+    COMMAND=$1
+
+    if [[ "$COMMAND" == "certonly" || "$COMMAND" == "renew" ]]; then
+        echo ""
+    else
+        echo "letsencrypt-to-vault: Wrong command"
+        echo
+        show_help
+        exit 1
+    fi
+
+    shift
 
     while [[ $# -gt 0 ]]
     do
@@ -27,10 +39,14 @@ process_args() {
             VAULT_CERT_PATH="$2"
             shift
             ;;
-            *)
-            echo "Unknown flag: $2"
+            -*|--*)
+            echo "letsencrypt-to-vault: unknown flag: $2"
+            show_help
             exit 1
             ;;
+            *)
+            echo $2
+            return
         esac
     done
 }
@@ -41,6 +57,8 @@ show_help() {
     echo "Renew or get Let's Encrypt certificates and send it to Hashicorp Vault" 
     echo
     echo "Usage:"
+    echo "  letsencrypt-to-vault command [-flags] [sitesnames]"
+    echo ""
 }
 
 cert_renew() {
