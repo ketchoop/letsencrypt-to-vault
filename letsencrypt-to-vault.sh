@@ -41,6 +41,7 @@ process_args() {
             -f|--certbot-flags)
             CERTBOT_FLAGS="$2"
             shift
+            ;;
             -*|--*)
             echo "letsencrypt-to-vault: unknown flag: $2"
             show_help
