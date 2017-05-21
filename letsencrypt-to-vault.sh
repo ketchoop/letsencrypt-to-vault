@@ -66,11 +66,14 @@ show_help() {
 }
 
 cert_renew() {
-    echo
+    echo "Trying to get or renew certificates"
 }
 
 send_to_vault() { 
     local certs_dir="/etc/letsencrypt/live"
+
+    echo "Sending certs to vault..."
+    echo
 
     if [[ $COMMAND == "certonly" ]]; then
         local sitesnames="$DOMAINS"
@@ -90,6 +93,8 @@ send_to_vault() {
             -d "{\"key\":\"$privkey\", \"cert\": \"$cert\"}" \
             "http://$VAULT_ADDR/v1/secret/$VAULT_CERT_PATH/$sitename"
     done
+
+    echo "Done. Certificates were sent"
 }
 
 main() {
