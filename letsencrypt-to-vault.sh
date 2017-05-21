@@ -72,7 +72,13 @@ cert_renew() {
 send_to_vault() { 
     local certs_dir="/etc/letsencrypt/live"
 
-    for sitename in $(find $certs_dir -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
+    if [[ $COMMAND == "certonly" ]]; then
+        local sitesnames="$DOMAINS"
+    else
+        local sitesnames=$(find $certs_dir -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
+    fi
+
+    for sitename in $sitenames
     do
         local cert=$(cat $certs_dir/$sitename/fullchain.pem)
         local privkey=$(cat $certs_dir/$sitename/privkey.pem)
