@@ -58,7 +58,9 @@ show_help() {
 }
 
 cert_renew() {
-    echo "Trying to get or renew certificates"
+    echo "Trying to get or renew certificates..."
+    certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
+    echo "Certificates were renewed"
 }
 
 send_to_vault() { 
