@@ -2,9 +2,8 @@
 
 process_args() {
     # Default
-    VAULT_TOKEN="$VAULT_TOKEN"
-    VAULT_ADDR="$VAULT_ADDR"
     VAULT_CERT_PATH="certs"
+
     COMMAND=$1
 
     if [[ "$COMMAND" == "certonly" || "$COMMAND" == "renew" ]]; then
