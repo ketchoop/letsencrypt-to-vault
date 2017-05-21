@@ -4,24 +4,15 @@ process_args() {
     # Default
     VAULT_CERT_PATH="certs"
 
-    COMMAND=$1
-
-    if [[ "$COMMAND" == "certonly" || "$COMMAND" == "renew" ]]; then
-        echo ""
-    else
-        echo "letsencrypt-to-vault: Wrong command"
-        echo
-        show_help
-        exit 1
-    fi
-
-    shift
-
     while [[ $# -gt 0 ]]
     do
         key="$1"
 
         case $key in
+            certonly|renew)
+            COMMAND="$2"
+            shift
+            ;;
             -h|--help)
             show_help
             exit 0
