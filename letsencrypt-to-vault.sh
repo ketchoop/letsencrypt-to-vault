@@ -45,7 +45,9 @@ process_args() {
             exit 1
             ;;
             *)
-            echo $2
+            if [[ "$COMMAND" == "certonly" ]]; then
+                DOMAINS=$@
+            fi
             return
         esac
     done
