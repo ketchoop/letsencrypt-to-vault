@@ -72,8 +72,8 @@ send_to_vault() {
 
     for sitename in $(find $certs_dir -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
     do
-        local privkey=$(cat $certs_dir/$sitename/cert.pem)
-        local cert=$(cat $certs_dir/$sitename/privkey.pem)
+        local cert=$(cat $certs_dir/$sitename/fullchain.pem)
+        local privkey=$(cat $certs_dir/$sitename/privkey.pem)
 
         curl \
             -H "X-Vault-Token: $VAULT_TOKEN" \
