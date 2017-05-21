@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 
 process_args() {
     # Default
@@ -59,7 +60,7 @@ show_help() {
 
 cert_renew() {
     echo "Trying to get or renew certificates..."
-    certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
+    #certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
     echo "Certificates were renewed"
 }
 
