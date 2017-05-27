@@ -76,7 +76,7 @@ send_to_vault() {
         local sitesnames=$(find $certs_dir -maxdepth 1 -mindepth 1 -type d -exec basename {} \;)
     fi
 
-    for sitename in $sitenames
+    for sitename in $sitesnames
     do
         local cert=$(cat $certs_dir/$sitename/fullchain.pem)
         local privkey=$(cat $certs_dir/$sitename/privkey.pem)
