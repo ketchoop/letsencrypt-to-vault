@@ -86,7 +86,7 @@ send_to_vault() {
             -H "Content-Type: application/json" \
             -X POST \
             -d "{\"key\":\"$privkey\", \"cert\": \"$cert\"}" \
-            "VAULT_ADDR/v1/secret/$VAULT_CERT_PATH/$sitename"
+            "$VAULT_ADDR/v1/secret/$VAULT_CERT_PATH/$sitename"
     done
 
     echo "Done. Certificates were sent"
