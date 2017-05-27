@@ -4,6 +4,7 @@ set -eo pipefail
 process_args() {
     # Default
     VAULT_CERT_PATH="certs"
+    CERTBOT_FLAGS="-a webroot --webroot-path /tmp --agree-tos --renew-by-default"
 
     while [[ $# -gt 0 ]]
     do
@@ -60,7 +61,7 @@ show_help() {
 
 cert_renew() {
     echo "Trying to get or renew certificates..."
-    #certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
+    certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
     echo "Certificates were renewed"
 }
 
