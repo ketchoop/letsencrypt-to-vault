@@ -42,7 +42,12 @@ process_args() {
             ;;
             *)
             if [[ "$COMMAND" == "certonly" ]]; then
-                DOMAINS=$@
+                local plain_domains=$@
+
+                for domain in $plain_domains
+                do
+                    DOMAINS+="-d $domain"
+                done
             fi
             return
         esac
