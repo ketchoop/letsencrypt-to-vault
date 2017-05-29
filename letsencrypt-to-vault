@@ -69,9 +69,9 @@ cert_renew() {
 
     for domain in $DOMAINS
     do
-        certbot_domains+="-d $domain"
+        certbot_domains+="-d $domain "
     done
-
+    
     echo "Trying to get or renew certificates..."
     certbot $COMMAND $CERTBOT_FLAGS $certbot_domains
     echo "Certificates were renewed"
