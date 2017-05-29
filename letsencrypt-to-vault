@@ -95,6 +95,7 @@ send_to_vault() {
         local privkey=$(cat $certs_dir/$sitename/privkey.pem | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\\n/g')
 
         curl \
+            -s \
             -H "X-Vault-Token: $VAULT_TOKEN" \
             -H "Content-Type: application/json" \
             -X POST \
