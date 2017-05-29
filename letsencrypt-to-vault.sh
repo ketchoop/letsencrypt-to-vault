@@ -42,12 +42,7 @@ process_args() {
             ;;
             *)
             if [[ "$COMMAND" == "certonly" ]]; then
-                local plain_domains=$@
-
-                for domain in $plain_domains
-                do
-                    DOMAINS+="-d $domain"
-                done
+                DOMAINS=$@
             fi
             return
         esac
@@ -65,8 +60,15 @@ show_help() {
 }
 
 cert_renew() {
+    local certbot_domains=""
+
+    for domain in $DOMAINS
+    do
+        certbot_domains+="-d $domain"
+    done
+
     echo "Trying to get or renew certificates..."
-    certbot $COMMAND $CERTBOT_FLAGS $DOMAINS
+    certbot $COMMAND $CERTBOT_FLAGS $CERTBOT_DOMAINS
     echo "Certificates were renewed"
 }
 
