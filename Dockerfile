@@ -1,6 +1,6 @@
 FROM certbot/certbot
 
-RUN apk update && apk add bash
+RUN apk update && apk add bash curl
 
 ADD ./letsencrypt-to-vault /usr/bin
 
