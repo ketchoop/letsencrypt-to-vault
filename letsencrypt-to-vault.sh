@@ -84,8 +84,8 @@ send_to_vault() {
 
     for sitename in $sitesnames
     do
-        local cert=$(cat $certs_dir/$sitename/fullchain.pem | tr -d "\n")
-        local privkey=$(cat $certs_dir/$sitename/privkey.pem | tr -d "\n")
+        local cert=$(cat $certs_dir/$sitename/fullchain.pem | sed -z 's/\n/ /g')
+        local privkey=$(cat $certs_dir/$sitename/privkey.pem | sed -z 's/\n/ /g') 
 
         curl \
             -H "X-Vault-Token: $VAULT_TOKEN" \
