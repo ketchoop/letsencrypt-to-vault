@@ -14,6 +14,7 @@ process_args() {
             certonly|renew)
             COMMAND="$1"
             shift
+            continue
             ;;
             -h|--help)
             show_help
@@ -21,19 +22,23 @@ process_args() {
             ;;
             -t|--vault-token)
             VAULT_TOKEN="$2"
-            shift
+            shift 2
+            continue
             ;;
             -a|--vault-addr)
             VAULT_ADDR="$2"
-            shift
+            shift 2
+            continue
             ;;
             -p|--vault-cert-path)
             VAULT_CERT_PATH="$2"
-            shift
+            shift 2
+            continue
             ;;
             -f|--certbot-flags)
             CERTBOT_FLAGS="$2"
-            shift
+            shift 2
+            continue
             ;;
             -*|--*)
             echo "letsencrypt-to-vault: unknown flag: $2"
