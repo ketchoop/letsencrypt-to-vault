@@ -73,7 +73,7 @@ cert_renew() {
     done
     
     echo "Trying to get or renew certificates..."
-    certbot $COMMAND $CERTBOT_FLAGS $certbot_domains
+    certbot $COMMAND $CERTBOT_FLAGS $certbot_domains || true
     echo "Certificates were renewed"
 }
 
