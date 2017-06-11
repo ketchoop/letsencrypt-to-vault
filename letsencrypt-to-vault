@@ -69,6 +69,7 @@ show_help() {
     echo "      -a, --vaul-addr Address of vault server (VAULT_ADDR)"
     echo "      -f, --certbot-flags Options that are passed to certbot. Overrides default (CERTBOT_FLAGS)"
     echo "      -h, --help Show help"
+    echo "      -p, --vault-cert-path Path where cert will be stored (VAULT_CERT_PATH)"
     echo "      -t, --vault-token Vault token (VAULT_TOKEN)"
 }
 
