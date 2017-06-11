@@ -28,8 +28,8 @@ This script sends in Vault fullchain and privkey and save them in key and cert f
 
 ## Docker
 
-This dockerfile contains exposed volume */webroot-dir* for webroot plugin.
-This means, that you can use it to share it to your **containerized proxy** by volumes_from.
+This docker container uses and exposes */webroot-dir*(by default) for webroot plugin.
+You can use it to share it to your **containerized proxy** by volumes_from.
 If it's not containerized, just use ```-v``` flag to share it in place that you need(/usr/share/nginx/webroot for example).
 
 Example:
