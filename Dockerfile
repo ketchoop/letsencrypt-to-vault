@@ -6,6 +6,6 @@ ADD ./letsencrypt-to-vault /usr/bin
 
 EXPOSE 80 443
 
-VOLUME /certs-dir
+VOLUME /webroot-dir
 
 ENTRYPOINT [ "letsencrypt-to-vault" ]

@@ -4,7 +4,7 @@ set -eo pipefail
 process_args() {
     # Default
     VAULT_CERT_PATH="certs"
-    CERTBOT_FLAGS="--webroot --webroot-path /certs-dir --agree-tos --renew-by-default"
+    CERTBOT_FLAGS="--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default"
 
     while [[ $# -gt 0 ]]
     do
@@ -57,11 +57,19 @@ process_args() {
 show_help() {
     echo "Let's encrypt to Hashicorp Vault"
     echo
-    echo "Renew or get Let's Encrypt certificates and send it to Hashicorp Vault" 
+    echo "Renew or get Let's Encrypt certificates and send it to Hashicorp Vault"
     echo
     echo "Usage:"
     echo "  letsencrypt-to-vault command [-flags] [sitesnames]"
-    echo ""
+    echo
+    echo "  Some flags can be set by env vars."
+    echo "  Var names for this flags are in parens in flags description below"
+    echo
+    echo "Flags:"
+    echo "      -a, --vaul-addr Address of vault server (VAULT_ADDR)"
+    echo "      -f, --certbot-flags Options that are passed to certbot. Overrides default (CERTBOT_FLAGS)"
+    echo "      -h, --help Show help"
+    echo "      -t, --vault-token Vault token (VAULT_TOKEN)"
 }
 
 cert_renew() {
