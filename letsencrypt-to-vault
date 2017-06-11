@@ -3,8 +3,13 @@ set -eo pipefail
 
 process_args() {
     # Default
-    VAULT_CERT_PATH="certs"
-    CERTBOT_FLAGS="--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default"
+    if [[ -z $VAULT_CERT_PATH ]]; then
+        VAULT_CERT_PATH="certs"
+    fi
+
+    if [[ -z $CERTBOT_FLAGS ]]; then
+        CERTBOT_FLAGS="--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default"
+    fi
 
     while [[ $# -gt 0 ]]
     do
