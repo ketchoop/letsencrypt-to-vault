@@ -14,7 +14,7 @@ Renew or get Let's Encrypt certificates and send it to Hashicorp Vault
       -a, --vaul-addr Address of vault server (VAULT_ADDR)
       -f, --certbot-flags Options that are passed to certbot. Overrides default (CERTBOT_FLAGS)
       -h, --help Show help
-      -p, --vault-cert-path Path where cert will be stored (VAULT_CERT_PATH)
+      -p, --vault-cert-path Path where certs will be stored (VAULT_CERT_PATH)
       -t, --vault-token Vault token (VAULT_TOKEN)
 
 Default value for certbot-flags is: ```--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default```.
