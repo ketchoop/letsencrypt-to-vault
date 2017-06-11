@@ -10,7 +10,7 @@ Renew or get Let's Encrypt certificates and send it to Hashicorp Vault
 
   Some flags can be set by env vars.
   Var names for this flags are in parens in flags description below
-### Flags
+#### Flags
       -a, --vaul-addr Address of vault server (VAULT_ADDR)
       -f, --certbot-flags Options that are passed to certbot. Overrides default (CERTBOT_FLAGS)
       -h, --help Show help
@@ -19,14 +19,14 @@ Renew or get Let's Encrypt certificates and send it to Hashicorp Vault
 
 Default value for certbot-flags is: ```--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default```.
 
-### How certs are stored
+## How certs are stored
 
 Path in Vault consists of: your vault cert path and site name. 
 For example, if you have path prefix like secret/my/certs and certs for two sites one.site and another.site
 it will be secret/my/certs/my.site and /secret/my/certs/another.site.
 This script sends in Vault fullchain and privkey and save them in key and cert fields.
 
-### Docker
+## Docker
 
 This dockerfile contains exposed volume */webroot-dir* for webroot plugin.
 This means, that you can use it to share it to your **containerized proxy** by volumes_from.
