@@ -19,6 +19,13 @@ Renew or get Let's Encrypt certificates and send it to Hashicorp Vault
 
 Default value for certbot-flags is: ```--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default```.
 
+### How it is stored
+
+Path in Vault consists of: your vault cert path and site name. 
+For example, if you have path prefix like secret/my/certs and certs for two sites one.site and another.site
+it will be secret/my/certs/my.site and /secret/my/certs/another.site.
+This script sends in Vault fullchain and privkey and save them in key and cert fields.
+
 ### Docker
 
 This dockerfile contains exposed volume */webroot-dir* for webroot plugin.
