@@ -52,7 +52,7 @@ process_args() {
             ;;
             *)
             if [[ "$COMMAND" == "certonly" ]]; then
-                DOMAINS=$@
+                DOMAINS="$@"
             fi
             return
         esac
@@ -128,9 +128,9 @@ send_to_vault() {
 }
 
 main() {
-    process_args $@
+    process_args "$@"
     cert_renew
     send_to_vault
 }
 
-main $@
+main "$@"
