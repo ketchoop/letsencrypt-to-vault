@@ -57,6 +57,13 @@ process_args() {
             return
         esac
     done
+
+    if [[ -z "$COMMAND" ]]; then
+        echo "Command wasn't passed to script"
+        echo
+        show_help
+        exit 1
+    fi
 }
 
 show_help() {
