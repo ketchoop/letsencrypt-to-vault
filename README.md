@@ -17,7 +17,7 @@ Renew or get Let's Encrypt certificates and send it to Hashicorp Vault
       -p, --vault-cert-path Path where certs will be stored (VAULT_CERT_PATH)
       -t, --vault-token Vault token (VAULT_TOKEN)
 
-Default value for certbot-flags is: ```--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default```.
+Default value for certbot-flags is: `--webroot --webroot-path /webroot-dir --agree-tos --renew-by-default`.
 
 ## How certs are stored
 
@@ -30,7 +30,7 @@ This script sends in Vault fullchain and privkey and save them in key and cert f
 
 This docker container uses and exposes */webroot-dir*(by default) for webroot plugin.
 You can use it to share it to your **containerized proxy** by volumes_from.
-If it's not containerized, just use ```-v``` flag to share it in place that you need(/usr/share/nginx/webroot for example).
+If it's not containerized, just use `-v` flag to share it in place that you need(/usr/share/nginx/webroot for example).
 
 Example:
 ```
