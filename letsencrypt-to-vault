@@ -115,6 +115,12 @@ send_to_vault() {
         local cert=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\\n/g' $certs_dir/$sitename/fullchain.pem)
         local privkey=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\\n/g' $certs_dir/$sitename/privkey.pem)
 
+        if [[ -z "$cert" || -z "$privkey" ]]; then
+            echo "Error: can't find cert for $sitename"
+
+            exit 1
+        fi
+
         curl \
             -s \
             -H "X-Vault-Token: $VAULT_TOKEN" \
