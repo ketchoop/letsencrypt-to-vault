@@ -63,7 +63,7 @@ process_args() {
     done
 
     if [[ -z "$COMMAND" ]]; then
-        echo "Command wasn't passed to script"
+        echoerr "Command wasn't passed to script"
         echo
         show_help
         exit 1
@@ -120,7 +120,7 @@ send_to_vault() {
         local privkey=$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\\n/g' $certs_dir/$sitename/privkey.pem)
 
         if [[ -z "$cert" || -z "$privkey" ]]; then
-            echo "Error: can't find cert for $sitename"
+            echoerr "Error: can't find cert for $sitename"
 
             exit 1
         fi
