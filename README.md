@@ -36,3 +36,7 @@ Example:
 ```
 docker run -ti -v /my/path/for-webroot:/webroot-dir ket4yii/letsencrypt-to-vault renew -t something-uuidgenerated -p secret/my/certs/certs -a http://vault.addr:8200
 ```
+
+## Kubernetes
+
+Sample CronJob is in .kube directory. If you want to use it, just change `args` section in configuration. Default schedule is to run the script once in a three months.
